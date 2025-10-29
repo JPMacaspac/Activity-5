@@ -1,0 +1,24 @@
+/* src/style/BlogList.css */
+.blog-list {
+  list-style: none;
+  padding: 0;
+}
+
+.blog-list li {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-list small {
+  color: #777;
+  margin-left: 10px;
+}

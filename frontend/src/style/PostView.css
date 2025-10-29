@@ -1,0 +1,16 @@
+/* src/style/PostView.css */
+.post-view {
+  padding: 30px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.post-view h2 {
+  color: var(--primary-color);
+}
+
+.post-view small {
+  color: #777;
+}
