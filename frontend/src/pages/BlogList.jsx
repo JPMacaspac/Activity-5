@@ -22,17 +22,17 @@ export default function BlogList() {
 
   if (loading) {
     return (
-      <>
+      <div className="min-h-screen bg-green-50">
         <Navbar />
         <div className="max-w-6xl mx-auto px-4 py-8 text-center">
           <p className="text-gray-600">Loading posts...</p>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="min-h-screen bg-green-50">
       <Navbar />
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
@@ -85,6 +85,6 @@ export default function BlogList() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

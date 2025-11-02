@@ -147,18 +147,18 @@ export default function PostView() {
 
   if (loading) {
     return (
-      <>
+      <div className="min-h-screen bg-green-50">
         <Navbar />
         <div className="max-w-4xl mx-auto px-4 py-8 text-center">
           <p className="text-gray-600">Loading post...</p>
         </div>
-      </>
+      </div>
     );
   }
 
   if (!post) {
     return (
-      <>
+      <div className="min-h-screen bg-green-50">
         <Navbar />
         <div className="max-w-4xl mx-auto px-4 py-8 text-center">
           <p className="text-gray-600 mb-4">Post not found</p>
@@ -166,12 +166,12 @@ export default function PostView() {
             Back to posts
           </button>
         </div>
-      </>
+      </div>
     );
   }
 
   return (
-    <>
+    <div className="min-h-screen bg-green-50">
       <Navbar />
       <div className="max-w-4xl mx-auto px-4 py-8">
         <button onClick={() => navigate('/posts')} className="text-green-600 font-semibold hover:underline mb-6">
@@ -276,6 +276,6 @@ export default function PostView() {
           )}
         </section>
       </div>
-    </>
+    </div>
   );
 }

@@ -133,7 +133,7 @@ export default function PostForm() {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-green-50">
       <Navbar />
       <div className="max-w-2xl mx-auto px-4 py-8">
         <div className="bg-white p-8 rounded-lg shadow-lg">
@@ -217,6 +217,6 @@ export default function PostForm() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

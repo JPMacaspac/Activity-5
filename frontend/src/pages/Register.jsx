@@ -43,8 +43,16 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg">
+    <div className="min-h-screen bg-green-50 flex flex-col items-center justify-center gap-6 px-4">
+      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-lg border border-gray-200 relative">
+        <button
+          onClick={() => navigate('/')}
+          className="absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center text-gray-600 hover:text-gray-800"
+          aria-label="Close and go to main page"
+          title="Close"
+        >
+          ×
+        </button>
         <h2 className="text-3xl font-bold mb-6 text-center text-green-600">Sign Up</h2>
 
         {error && <div className="bg-red-100 text-red-700 p-3 rounded mb-4">{error}</div>}
@@ -102,6 +110,7 @@ export default function Register() {
           </Link>
         </p>
       </div>
+      
     </div>
   );
 }
