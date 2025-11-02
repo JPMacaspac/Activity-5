@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function Register() {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
     password: '',
+    confirmPassword: '',
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -22,7 +25,12 @@ export default function Register() {
     e.preventDefault();
     setError('');
     setLoading(true);
-
+    // Validate password match
+    if (formData.password !== formData.confirmPassword) {
+      setError('Passwords do not match');
+      setLoading(false);
+      return;
+    }
     fetch('http://localhost:3000/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -84,14 +92,51 @@ export default function Register() {
 
           <div>
             <label className="block text-gray-700 font-medium mb-2">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-none focus:border-green-600 text-black"
-              placeholder="••••••••"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                className="w-full border border-gray-300 px-4 py-2 rounded pr-10 focus:outline-none focus:border-green-600 text-black"
+                placeholder="••••••••"
+                aria-label="Password"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((s) => !s)}
+                className="absolute inset-y-0 right-2 flex items-center pr-2 text-gray-500 hover:text-gray-700"
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <label className="block text-gray-700 font-medium mb-2">Confirm Password</label>
+            <div className="relative">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                className="w-full border border-gray-300 px-4 py-2 rounded pr-10 focus:outline-none focus:border-green-600 text-black"
+                placeholder="Confirm your password"
+                aria-label="Confirm password"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((s) => !s)}
+                className="absolute inset-y-0 right-2 flex items-center pr-2 text-gray-500 hover:text-gray-700"
+                aria-label={showPassword ? 'Hide password' : 'Show password'}
+              >
+                {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
+              </button>
+            </div>
+            {formData.confirmPassword && formData.password !== formData.confirmPassword && (
+              <p className="text-sm text-red-600 mt-2">Passwords do not match</p>
+            )}
           </div>
 
           <button
